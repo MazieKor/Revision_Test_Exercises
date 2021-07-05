@@ -1,2 +1,3 @@
 Nowość
 Testowanie nowej gałęzi
+Tworzenie lokalnie nowej gałęzi
