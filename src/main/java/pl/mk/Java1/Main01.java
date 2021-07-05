@@ -90,7 +90,7 @@ public class Main01 {
         System.out.println(n);
 
         int binar = 0b11100;
-        System.out.println("binar: " + binar); //wynik to 28
+        System.out.println("binar wynik: " + binar); //wynik to 28
 
         short overflow = (short) 1_111_111;  //jeśli nie zrzutuję to kompilator pokaże błąd
         System.out.println("short: " + overflow);
