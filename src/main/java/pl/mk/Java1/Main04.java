@@ -2,6 +2,7 @@ package pl.mk.Java1;
 
 import pl.mk.Java2.Parent;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main04 {
@@ -28,5 +29,37 @@ public class Main04 {
             break;
         }
         System.out.println("wynik to: " + test2);
+
+        String testSlitString = "testuje split rozdzielany wg spacji";
+
+        String[] testSplit1 = testSlitString.split(" ");
+        System.out.println("test nr 1: " + Arrays.toString(testSplit1));
+        String[] testSplit2;
+        testSplit2 = testSlitString.split(" ");
+        System.out.println("test nr 2: " + Arrays.toString(testSplit2));
+        String[] testSplit3 = new String[0];
+        testSplit3 = testSlitString.split(" ");
+        System.out.println("test nr 3: " + Arrays.toString(testSplit3));
+
+        char nul = '\0';
+        System.out.println("char nul wynik:"+nul+".");
+        String s = "food".replace('o', '\0');
+        System.out.println(s);
+        String fill = "÷";
+        System.out.println(Arrays.toString(fill.toCharArray()) + fill.length() );
+        char fillCh = fill.charAt(0);
+        System.out.println((int)fillCh);
+        char rec = '\u9608';
+        System.out.println(rec);
+        System.out.println( "\\u" + Integer.toHexString('÷' | 0x10000).substring(1) );
+
+        String charTab = new String(new char[10]);
+        StringBuilder strr = new StringBuilder("uwaga");
+        strr.replace(1,4, "m");
+        System.out.println("Stringbuilder: " + strr); //uma
+        strr.delete(1,20);
+        System.out.println("Stringbuilder: " + strr + ". Length: " + strr.length());  //u
+        System.out.println("charTab: " + charTab);
+
     }
 }
