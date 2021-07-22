@@ -103,7 +103,11 @@ public class Main01 {
         double aInt = Double.parseDouble(aStr);
         System.out.println("parsowanie: " + aInt);
 
+        double a1 = 11/3;
+        System.out.println(a1);
 
+        int a2 = (int) 14.9;
+        System.out.println(a2);
     }
     static int testOfmethodsInt(int test2){
         test2 += 355;
