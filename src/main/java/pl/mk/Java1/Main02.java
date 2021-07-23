@@ -42,7 +42,10 @@ public class Main02 {
         StringUtils.replace(testStrUtils, "t", "VV");
         StringUtils.replace(testStrUtils,  "t",  "VV");
         System.out.println(testStrUtils);
-        System.out.println("alpha: " + StringUtils.isNumeric("23,6"));
+        System.out.println("isNumeric - 23,6: " + StringUtils.isNumeric("23,6"));
+        System.out.println("isNumeric 2 १२३: " + StringUtils.isNumeric("१२३"));
+        System.out.println("isDigits १२३: " + NumberUtils.isDigits("१२३"));
+        System.out.println("isParsable: १२३: " + NumberUtils.isParsable("१२३"));
         String przykład = "alfab    etdirfrtdarx";
         System.out.println("containsAny: " + StringUtils.containsAny(przykład, "dif", "ret"));
         System.out.println("containsIgnCase: " + StringUtils.containsIgnoreCase(przykład, "dif"));

@@ -5,6 +5,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class Main01 {
+
+
+
     public static void main(String[] args) {
 //        Child child = new Child();
         Child child2 = new Child("uwaga na konstruktry");
