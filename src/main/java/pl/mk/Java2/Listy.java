@@ -21,7 +21,7 @@ public class Listy {
 
         List<String> listStrUnm = Collections.unmodifiableList(listStr);
         System.out.println("Lista niemodyfik: " + listStrUnm);
-//        listStrUnm.add("szósty");  //jak chcę dodać wyskakuje błąd
+//        listStrUnm.add("szósty");  //lista niemodyfikowalna: jak chcę dodać wyskakuje błąd
 //        listStrUnm.remove(2);  //jak chcę skasować wyskakuje błąd
         listStr.set(0, "pierwszyPoZmianie");
         System.out.println("Lista niemodyfik po zmianie modyfikowalnej: " + listStrUnm); //zmiana w modyfik. powoduje zmianę w niemodyfik.

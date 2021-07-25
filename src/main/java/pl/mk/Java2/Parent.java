@@ -5,7 +5,7 @@ public class Parent {
     private int age;
 
     public Parent(){
-        System.out.println("konstruktor Parent");
+        System.out.println("Test: konstruktor Parent");
     }
     public Parent(String name, int age){
         this.name = name;
@@ -14,7 +14,7 @@ public class Parent {
 
 
     public void printBook() {
-        System.out.println("Drukowanie " + "ebook");
+        System.out.println("Test: Drukowanie " + "ebook");
     }
     public static void hiddenMethod() {
         System.out.println("ParentHiddenMethod");
