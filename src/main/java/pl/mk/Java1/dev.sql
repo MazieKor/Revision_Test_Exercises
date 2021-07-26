@@ -60,6 +60,28 @@ INSERT INTO products(ProductName, UnitPrice, UnitsInStock, Discontinued, Categor
 ('szampan - lampka', 29, 6, false, 4),
 ('herbata czarna', 7.99, 6, false, 4);
 
+INSERT INTO products(ProductName, UnitPrice, UnitsInStock, Discontinued, CategoryID) VALUES
+('sos pomidorowy', 9.79, 3, true, 5),
+('sos czosnkowy z pietruszką', 7, 3, false, 5),
+('majonez domowy', 4, 0, true, 5),
+('ketchup', 2.5, 6, false, 5),
+('sos sojowy - podwójny', 11, 11, false, 5),
+('mieszanka przypraw indyjska', 8.9, 16, false, 5),
+('curry oryginalne', 20.05, 10, false, 5),
+('imbir marynowany', 30.00, 6, false, 5),
+('sos warzywny', 7.99, 3, false, 5);
+
+INSERT INTO products(ProductName, UnitPrice, UnitsInStock, Discontinued, CategoryID) VALUES
+('jabłka krajowe', 9.79, 13, true, 6),
+('gruszki', 7, 4, false, 6),
+('czereśnie',5.6 , 0, true, 6),
+('czereśnie - mala porcja', 2.9, 12, false, 6),
+('bób', 15, 12, false, 6),
+('fasola zapiekana', 18.9, 12, false, 6),
+('tofu', 20.05, 22, false, 6),
+('melon japoński', 41.00, 5, false, 6),
+('brokół', 7.99, 21, false, 6);
+
 
 
 
