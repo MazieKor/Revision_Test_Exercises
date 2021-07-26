@@ -10,6 +10,12 @@ PRIMARY KEY (ProductID), FOREIGN KEY(CategoryID) REFERENCES categories(CategoryI
 describe categories;
 describe products;
 
+INSERT INTO categories(CategoryName, CategoryDescription) VALUES ('Confections', 'Desserts, candies and sweet breads');
+INSERT INTO categories(CategoryName, CategoryDescription) VALUES ('Dairy Products', 'Cheeses');
+INSERT INTO categories(CategoryName, CategoryDescription) VALUES ('Grains', 'Breads, Crackers, Pasta');
+INSERT INTO categories(CategoryName, CategoryDescription) VALUES ('Beverages', 'Softdrinks, coffees, teas, beers');
+INSERT INTO categories(CategoryName, CategoryDescription) VALUES ('Condiments', 'Sweet and Savory Sauces');
+INSERT INTO categories(CategoryName, CategoryDescription) VALUES ('Produce', 'Dried fruit and bean curd');
 
 
 
