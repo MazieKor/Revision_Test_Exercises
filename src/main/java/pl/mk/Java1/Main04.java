@@ -49,9 +49,11 @@ public class Main04 {
         System.out.println(Arrays.toString(fill.toCharArray()) + fill.length() );
         char fillCh = fill.charAt(0);
         System.out.println((int)fillCh);
-        char rec = '\u9608';
-        System.out.println(rec);
-        System.out.println( "\\u" + Integer.toHexString('÷' | 0x10000).substring(1) );
+        char rec = '\u9608'; //symbol chiński
+        char rec2 = 9608; //symbol full block
+        System.out.println("char u9608: " + rec); //symbol chiński
+        System.out.println("char 9608: " + rec2); //symbol full block
+        System.out.println( "\\u" + Integer.toHexString('÷' | 0x10000).substring(1) ); //wynik: u00f7
 
         String charTab = new String(new char[10]);
         StringBuilder strr = new StringBuilder("uwaga");
