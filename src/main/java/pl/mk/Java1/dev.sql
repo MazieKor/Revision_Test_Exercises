@@ -17,5 +17,50 @@ INSERT INTO categories(CategoryName, CategoryDescription) VALUES ('Beverages', '
 INSERT INTO categories(CategoryName, CategoryDescription) VALUES ('Condiments', 'Sweet and Savory Sauces');
 INSERT INTO categories(CategoryName, CategoryDescription) VALUES ('Produce', 'Dried fruit and bean curd');
 
+INSERT INTO products(ProductName, UnitPrice, UnitsInStock, Discontinued, CategoryID) VALUES
+('tort brzoskwiniowy', 54.5, 3, false, 1);
+
+INSERT INTO products(ProductName, UnitPrice, UnitsInStock, Discontinued, CategoryID) VALUES
+('gorąca czekolada', 12.59, 40, false, 1),
+('tarta marchewkowa', 15, 1, false, 1);
+
+INSERT INTO products(ProductName, UnitPrice, UnitsInStock, Discontinued, CategoryID) VALUES
+('ciasteczka domowe', 9.99, 10, true, 1),
+('ciasto drożdżowe', 15, 3, false, 1),
+('baklava', 19, 0, true, 1),
+('nugat z owocami', 22, 2, false, 1);
+
+INSERT INTO products(ProductName, UnitPrice, UnitsInStock, Discontinued, CategoryID) VALUES
+('ser szwajcarski dojrzewający - deska', 9.99, 6, true, 2),
+('jogurt owczy', 11.5, 3, false, 2),
+('gorgonzola z rodzynkami', 19, 0, true, 2),
+('cheddar 3-miesięczny', 22, 2, false, 2),
+('ser z rzodkiewką', 6, 6, false, 2),
+('mleko świeże', 8, 6, false, 2);
+
+INSERT INTO products(ProductName, UnitPrice, UnitsInStock, Discontinued, CategoryID) VALUES
+('makaron z serem', 9.99, 3, true, 3),
+('ravioli ze szpinakiem', 22.5, 3, false, 3),
+('bułka paryska', 2, 0, true, 3),
+('bułka sezamowa', 2.5, 2, false, 3),
+('makaron domowy', 12, 9, false, 3),
+('chleb z makiem', 8, 6, false, 3),
+('makaron bolognese', 24, 6, false, 3),
+('makaron tagliatelle z serem i warzywami', 28, 6, false, 3),
+('otręby pszenne', 8.39, 6, false, 3);
+
+INSERT INTO products(ProductName, UnitPrice, UnitsInStock, Discontinued, CategoryID) VALUES
+('herbata szielona', 9.99, 3, true, 4),
+('whisky podwójna', 22, 3, false, 4),
+('woda mineralna', 2, 0, true, 4),
+('woda niegazowana', 2.5, 2, false, 4),
+('kawa podwójna', 11, 9, false, 4),
+('kawa espresso', 8.5, 6, false, 4),
+('cognac', 24.22, 6, false, 4),
+('szampan - lampka', 29, 6, false, 4),
+('herbata czarna', 7.99, 6, false, 4);
+
+
+
 
 
