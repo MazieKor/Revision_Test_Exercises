@@ -82,6 +82,10 @@ INSERT INTO products(ProductName, UnitPrice, UnitsInStock, Discontinued, Categor
 ('melon japoński', 41.00, 5, false, 6),
 ('brokół', 7.99, 21, false, 6);
 
+INSERT INTO products(ProductName, UnitPrice, UnitsInStock, Discontinued, CategoryID) VALUES
+('jabłka zagraniczne', 13.00, 99, true, 6),
+('agrest czerwony', 6.12, 11, false, 6);
+
 
 
 
