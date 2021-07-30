@@ -24,7 +24,7 @@ public class Listy {
 //        listStrUnm.add("szósty");  //lista niemodyfikowalna: jak chcę dodać wyskakuje błąd
 //        listStrUnm.remove(2);  //jak chcę skasować wyskakuje błąd
         listStr.set(0, "pierwszyPoZmianie");
-        System.out.println("Lista niemodyfik po zmianie modyfikowalnej: " + listStrUnm); //zmiana w modyfik. powoduje zmianę w niemodyfik.
+        System.out.println("Test: Lista niemodyfik po zmianie modyfikowalnej: " + listStrUnm); //zmiana w modyfik. powoduje zmianę w niemodyfik.
 //        listStrUnm.set(2, "trzPoZmianie");  //jak chcę zmienić setem element to też ten sam błąd
 //        System.out.println("Lista niemodyfik po zmianie NIEmodyfikowalnej: " + listStrUnm);
     }
