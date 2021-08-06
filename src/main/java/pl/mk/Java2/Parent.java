@@ -24,6 +24,9 @@ public class Parent {
         System.out.println("metoda przeciążona z long");
     }                                                     //method overloading changing only type from int to long
 
+    public final void testFinal(){
+        System.out.println("test final");
+    }
 
     public static void hiddenMethod() {
         System.out.println("ParentHiddenMethod");

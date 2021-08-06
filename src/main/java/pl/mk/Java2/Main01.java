@@ -16,6 +16,10 @@ public class Main01 {
         Child child3 = new Child(1000);
         System.out.println(child3.age);  //can use this field age of parent; =1000
         System.out.println(child3.ageChild);  //=108
+        System.out.print("testowanie super z GrandChild: ");
+        grandChild.testSuperGrandChild();   // I can use super also with grandparent method
+
+
         child2.hiddenMethod();
 
 
