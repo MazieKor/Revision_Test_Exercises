@@ -41,6 +41,8 @@ public class Main01 {
             System.out.println("równe");
         } else
             System.out.println("nierówne");
+        parent.printBook(3);
+        parent.printBook(3L);  //testing overloaded methods with long vs int
 
         Fields fields = new Fields("test argumentowego konstr");  //only constructor with arguments is invoked
 

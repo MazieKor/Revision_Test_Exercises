@@ -19,5 +19,7 @@ public class Child extends Parent {
     public static void hiddenMethod() {
         System.out.println("ChildHiddenMethod");
     }
+//    public static void hiddenMethod(int a) {System.out.println("ChildHiddenMethod"); }  //checking overloading
+//    public static void hiddenMethod(char a) {System.out.println("ChildHiddenMethod"); }
 
 }

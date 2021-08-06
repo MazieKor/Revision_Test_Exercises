@@ -17,6 +17,14 @@ public class Parent {
     public void printBook() {
         System.out.println("Test: Drukowanie " + "ebook");
     }
+    public void printBook(int a) {
+        System.out.println("metoda przeciążona z int");
+    }
+    public void printBook(long a) {
+        System.out.println("metoda przeciążona z long");
+    }                                                     //method overloading changing only type from int to long
+
+
     public static void hiddenMethod() {
         System.out.println("ParentHiddenMethod");
     }
