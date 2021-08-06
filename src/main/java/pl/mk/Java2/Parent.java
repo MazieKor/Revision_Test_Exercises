@@ -2,7 +2,7 @@ package pl.mk.Java2;
 
 public class Parent {
     private String name;
-    private int age;
+    public int age =9;
 
     public Parent(){
         System.out.println("Test: konstruktor bezarg Parent");
