@@ -5,6 +5,13 @@ public class Fields {
     final static int volume = 20;
     int height;  // = 0 (do testu metody 7)
 
+    Fields(){
+        System.out.println("konstr bezarg. Fields");
+    }
+    Fields(String display){
+        System.out.println("konstr. argumentowy Fields " + display);
+    }
+
     public static void main(String[] args) {
 //        age = 30;
 ////        height = -90;  //nie mam dostępu do non-static

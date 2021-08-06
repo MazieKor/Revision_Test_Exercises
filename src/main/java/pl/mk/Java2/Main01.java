@@ -9,9 +9,14 @@ public class Main01 {
 
 
     public static void main(String[] args) {
-//        Child child = new Child();
-        Child child2 = new Child("uwaga na konstruktry");
+        Child child = new Child();  // 2 no-arguments constr. are invoked. There MUST BE a no-argument constr. in Parent to create child object (or no constr. in Parent at all)
+        System.out.println("KONIEC TWORZENIA OBIEKTU CHILD");
+        Child child2 = new Child("uwaga na konstruktry"); //no-argumrnt constr from Parent and argument constr from child
+        System.out.println("KONIEC TWORZENIA OBIEKTU CHILD2");
+        GrandChild grandChild = new GrandChild();
+        System.out.println("KONIEC TWORZENIA OBIEKTU GRANDCHILD");
         child2.hiddenMethod();
+
 
         Object stringInstance = "string";
         String realString = (String) stringInstance;
@@ -30,7 +35,13 @@ public class Main01 {
         testString2 = "NewImm3";
         System.out.println("String z new po zmianie: " + testString2);
 
+//        Parent parent = new Parent();
+//        if(child == parent){                 //I can compare without compilation error if there are parent - child relationship
+//            System.out.println("równe");
+//        } else
+//            System.out.println("nierówne");
 
+        Fields fields = new Fields("test argumentowego konstr");  //only constructor with arguments is invoked
 
     }
 

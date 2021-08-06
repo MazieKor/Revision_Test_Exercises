@@ -3,7 +3,8 @@ package pl.mk.Java2;
 public class Child extends Parent {
 
     public Child (){
-        System.out.println("konstruktor dziecko");
+//        super();
+        System.out.println("konstruktor bezargumentowy dziecko");
     }
     public Child (String str){
         System.out.println("konstr argumrntowy: " + str);
