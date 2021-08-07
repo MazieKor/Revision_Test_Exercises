@@ -24,33 +24,33 @@ public class PolymorphismTest {
         grandChild.testPolyMorphismChild(grandChild);  //static method
 
         System.out.println("Testing referring to different METHODS - Parent");
-        parentParent.testPolyMorphismParent(parent);  //normal use
+        parentParent.testPolyMorphismParent(parent);  //normal use, from Parent (although method is overriden in Child)
 //        parentParent.testPolyMorphismChild(child);  //I can't use child method
 
         System.out.println("Testing referring to different METHODS - polymorphism Parent");
-        parent.testPolyMorphismParent(parent);     //Child if overriden in Child, if not- parent
+        parent.testPolyMorphismParent(parent);     //Child if overriden in Child, if not- parent. If methods were static - no polymrphism, so parent method
         //parent.testPolyMorphismChild(child);    //I can't use child method, although object is Child
-        parent.testPolyMorphismParent2(parent);   //Child, but if it was overriden only in Grandchild and not in Child - parent method was used (not Grandchild)
+        parent.testPolyMorphismParent2(parent);   //Child, but if it were overriden only in Grandchild and not in Child - parent method was used (not Grandchild). If methods were static - no polymrphism, so parent method
 
         System.out.println("Testing referring to different METHODS - polymorphism Child");
         child.testPolyMorphismParent(parent);             //child if overriden in Child, if not- parent
         child.testPolyMorphismChild(child);               //I use child method
-        //child.testPolyMorphismGrandChild(grandChild);  //I can't use child method, although object is GrandChild
+        //child.testPolyMorphismGrandChild(grandChild);  //I can't use grandchild method, although object is GrandChild
 
         System.out.println("Testing referring to different METHODS - polymorphism, overriden method, Child");
         grandChild.testPolyMorphismParent(parentParent);  //grandchild refers to child method (not Parent)
         childChild.testPolyMorphismParent(parentParent);  //child also refers to child method
         parentParent.testPolyMorphismParent(parentParent);  //of course refers to parent method
         child.testPolyMorphismParent(parentParent);       //also refers to child method
-        parent.testPolyMorphismParent(parentParent);      //parent but refers to child method
+        parent.testPolyMorphismParent(parentParent);      //parent but refers to child method. If methods were static - no polymrphism, so parent method
 
         System.out.println("Testing referring to different METHODS - polymorphism2, overriden method, Child and GrandChild");
         grandChild.testPolyMorphismParent2(childChild);  //grandchild refers to grandchild method (not Child or Parent)
         childChild.testPolyMorphismParent2(childChild);  //child refers to child method
         parentParent.testPolyMorphismParent2(childChild);  //refers to parent method
-        child.testPolyMorphismParent2(childChild);       //refers to GrandChild method
-        parent.testPolyMorphismParent2(childChild);       //parent, refers to child method (not GrandChild)
-        parentGrChild.testPolyMorphismParent2(childChild);  //parent 2, refers to GrandChildmethod
+        child.testPolyMorphismParent2(childChild);       //refers to GrandChild method. If methods were static - no polymrphism, so Child method
+        parent.testPolyMorphismParent2(childChild);       //parent, refers to child method (not GrandChild). If methods were static - no polymrphism, so parent method
+        parentGrChild.testPolyMorphismParent2(childChild);  //parent 2, refers to GrandChildmethod. If methods were static - no polymrphism, so parent method
     }
 
 }

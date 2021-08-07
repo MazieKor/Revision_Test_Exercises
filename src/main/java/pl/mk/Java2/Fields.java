@@ -5,6 +5,7 @@ public class Fields {
     final static int volume = 20;
     int height;  // = 0 (do testu metody 7)
 
+
     Fields(){
         System.out.println("konstr bezarg. Fields");
     }
