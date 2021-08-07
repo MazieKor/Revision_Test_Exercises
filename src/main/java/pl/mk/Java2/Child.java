@@ -31,4 +31,15 @@ public class Child extends Parent {
         super.printBook(2);
     }
 
+    public static void testPolyMorphismChild(Child child){
+        System.out.println("test Poly Child");
+    }
+
+    public void testPolyMorphismParent(Parent parent){
+        System.out.println("test Poly - Child class, overrides Parent method");
+    }
+    public void testPolyMorphismParent2(Parent parent){
+        System.out.println("test Poly2 - Child class, overrides Parent method");
+    }
+
 }

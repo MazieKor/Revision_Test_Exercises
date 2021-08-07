@@ -27,6 +27,16 @@ public class Parent {
     public final void testFinal(){
         System.out.println("test final");
     }
+    public void testFinal(int a){                //I can overload final methods
+        System.out.println();
+    }
+
+    public void testPolyMorphismParent(Parent parent){
+        System.out.println("test Poly Parent");
+    }
+    public void testPolyMorphismParent2(Parent parent){
+        System.out.println("test Poly2 Parent");
+    }
 
     public static void hiddenMethod() {
         System.out.println("ParentHiddenMethod");
