@@ -4,6 +4,14 @@ public class Parent {
     private String name;
     public int age =9;
 
+    String str1 = "str1 PARENT";
+    private String str1Private = "str1 PARENT Private";
+    String str2 = "str2 PARENT";
+    private String str2Private = "str2 PARENT Private";
+    String str1 = "str1 PARENT";
+    private String str1Private = "str1 PARENT Private";
+
+
     public Parent(){
         System.out.println("Test: konstruktor bezarg Parent");
     }
@@ -41,4 +49,10 @@ public class Parent {
     public static void hiddenMethod() {
         System.out.println("ParentHiddenMethod");
     }
+
+    public static void main(String[] args) {
+//         Parent parent = new Parent();
+//         Child.testPolyMorphismParent(parent);   //I can invoke (if static) Parent version method or Child version (depending if I use Child.method or Parent.method)
+    }
+
 }

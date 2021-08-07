@@ -20,7 +20,7 @@ public class Main01 {
         grandChild.testSuperGrandChild();   // I can use super also with grandparent method
 
 
-        child2.hiddenMethod();
+        child2.hiddenMethod();      //ChildHiddenMethod
 
 
         Object stringInstance = "string";
@@ -41,7 +41,7 @@ public class Main01 {
         System.out.println("String z new po zmianie: " + testString2);
 
         Parent parent = new Parent();
-        if(child == parent){                 //I can compare without compilation error if there are parent - child relationship
+        if(child == parent){                 //I can compare without compilation error if there are parent - child relationship. Result = "nierówne"
             System.out.println("równe");
         } else
             System.out.println("nierówne");

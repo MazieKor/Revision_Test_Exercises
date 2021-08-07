@@ -51,6 +51,10 @@ public class PolymorphismTest {
         child.testPolyMorphismParent2(childChild);       //refers to GrandChild method. If methods were static - no polymrphism, so Child method
         parent.testPolyMorphismParent2(childChild);       //parent, refers to child method (not GrandChild). If methods were static - no polymrphism, so parent method
         parentGrChild.testPolyMorphismParent2(childChild);  //parent 2, refers to GrandChildmethod. If methods were static - no polymrphism, so parent method
+
+//        System.out.println("Testing STATIC invoking");
+//        Parent.testPolyMorphismParent(parent);                //uses parent method
+//        Child.testPolyMorphismParent(parent);                 //uses child method
     }
 
 }

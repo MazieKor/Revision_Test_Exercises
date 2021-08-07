@@ -42,4 +42,8 @@ public class Child extends Parent {
         System.out.println("test Poly2 - Child class, overrides Parent method");
     }
 
+    public static void main(String[] args) {
+//        Parent parent = new Parent();
+//        Parent.testPolyMorphismParent(parent);   //I can invoke (if static) Parent version method or Child version (depending if I use Child.method or Parent.method)
+    }
 }
