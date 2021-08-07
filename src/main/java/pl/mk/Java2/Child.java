@@ -2,6 +2,20 @@ package pl.mk.Java2;
 
 public class Child extends Parent {
     int ageChild = 99 + age;
+//Testing Fields:
+    static String str1 = "str1 CHILD";
+    private String str1Private = "str1 CHILD Private";
+    String str2 = "str2 CHILD";
+    private String str2Private = "str2 CHILD Private";
+    String str3 = "str3 CHILD";
+    private String str3Private = "str3 CHILD Private";
+
+    //str1 = "dd";      // I can't change the field (even if only declared earlier)
+
+
+    public String getStr1Private() {
+        return str1Private;
+    }
 
     public Child (){
 //        super("bezargumentowy", 1);  //If I have only argument-constructor in parent I must use super in class; If I un-comment this line non-argument constructor of parent will not be invoked (only argument construcor of Parent will be invoked + this one from Child)
@@ -45,5 +59,6 @@ public class Child extends Parent {
     public static void main(String[] args) {
 //        Parent parent = new Parent();
 //        Parent.testPolyMorphismParent(parent);   //I can invoke (if static) Parent version method or Child version (depending if I use Child.method or Parent.method)
+
     }
 }

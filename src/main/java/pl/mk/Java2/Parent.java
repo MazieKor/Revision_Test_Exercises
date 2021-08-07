@@ -3,14 +3,17 @@ package pl.mk.Java2;
 public class Parent {
     private String name;
     public int age =9;
-
-    String str1 = "str1 PARENT";
+//Testing fields:
+    static String str1 = "str1 PARENT";
     private String str1Private = "str1 PARENT Private";
     String str2 = "str2 PARENT";
     private String str2Private = "str2 PARENT Private";
-    String str1 = "str1 PARENT";
-    private String str1Private = "str1 PARENT Private";
+    String str4 = "str4 PARENT";
+    private String str4Private = "str4 PARENT Private";
 
+    public String getStr1Private() {
+        return str1Private;
+    }
 
     public Parent(){
         System.out.println("Test: konstruktor bezarg Parent");
