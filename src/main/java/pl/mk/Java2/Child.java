@@ -40,9 +40,16 @@ public class Child extends Parent {
 //        System.out.println("test final");
 //    }
 
-    public void testSuper(){
-//        super("test",2); //can't use constructor-super in method
-        super.printBook(2);
+//    public void testSuper(){
+////        super("test",2); //can't use constructor-super in method
+////        super.printBook(2);
+////        testVarArg();   // can use without arguments
+//
+//        System.out.println("test super method, CHILD");
+//    }
+
+    public static void testVarArg(String... testString){
+        System.out.println("Test varArg");
     }
 
     public static void testPolyMorphismChild(Child child){
@@ -56,9 +63,12 @@ public class Child extends Parent {
         System.out.println("test Poly2 - Child class, overrides Parent method");
     }
 
-    public static void main(String[] args) {
-//        Parent parent = new Parent();
-//        Parent.testPolyMorphismParent(parent);   //I can invoke (if static) Parent version method or Child version (depending if I use Child.method or Parent.method)
-
-    }
+//    public static void main(String[] args) {
+////        Parent parent = new Parent();
+////        Parent.testPolyMorphismParent(parent);   //I can invoke (if static) Parent version method or Child version (depending if I use Child.method or Parent.method)
+////        Child child = new Child();
+//        testVarArg("jeden", "dwa");     //works also with 0 arguments
+//        System.out.println("testing Child main method");
+//
+//    }
 }

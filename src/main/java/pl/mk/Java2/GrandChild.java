@@ -13,11 +13,23 @@ public class GrandChild extends Child {
         super.printBook(1);
     }
 
+    public void testSuper(){
+        System.out.println("test super method, GRANDCHILD");
+        super.testSuper();
+    }
+
     public void testPolyMorphismGrandChild(GrandChild grandChild){
         System.out.println("test Poly Grandchild");
     }
 
     public void testPolyMorphismParent2(Parent parent){
         System.out.println("test Poly2 - GRANDChild class");
+    }
+
+    public static void main(String[] args) {                    //without main method here I use main method in higher classes (Child or Parent)
+        System.out.println("testing GrandChild main method");
+        GrandChild ch = new GrandChild();
+//        testSuper();         //use method from Child
+        ch.testSuper();
     }
 }

@@ -27,6 +27,7 @@ public class Parent {
 
     public void printBook() {
         System.out.println("Test: Drukowanie " + "ebook");
+
     }
     public void printBook(int a) {
         System.out.println("metoda przeciążona z int");
@@ -40,6 +41,10 @@ public class Parent {
     }
     public void testFinal(int a){                //I can overload final methods
         System.out.println();
+    }
+
+    public void testSuper(){
+        System.out.println("test super method, PARENT");
     }
 
     public void testPolyMorphismParent(Parent parent){
@@ -56,6 +61,8 @@ public class Parent {
     public static void main(String[] args) {
 //         Parent parent = new Parent();
 //         Child.testPolyMorphismParent(parent);   //I can invoke (if static) Parent version method or Child version (depending if I use Child.method or Parent.method)
+        System.out.println("testing Parent main method");
+
     }
 
 }
