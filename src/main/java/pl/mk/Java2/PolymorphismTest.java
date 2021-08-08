@@ -55,6 +55,10 @@ public class PolymorphismTest {
 //        System.out.println("Testing STATIC invoking");
 //        Parent.testPolyMorphismParent(parent);                //uses parent method
 //        Child.testPolyMorphismParent(parent);                 //uses child method
+
+        System.out.println("Testing methods in constructor: ");
+        Child2 child2 = new Child2();    //bug, but if childvalue is static shows correctly 1; if showinfo() method were static: it displays ParentValue: 456
+
     }
 
 }
