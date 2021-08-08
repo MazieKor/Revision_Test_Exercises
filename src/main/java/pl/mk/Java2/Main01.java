@@ -41,7 +41,7 @@ public class Main01 {
         System.out.println("String z new po zmianie: " + testString2);
 
         Parent parent = new Parent();
-        if(child == parent){                 //I can compare without compilation error if there are parent - child relationship. Result = "nierówne"
+        if (child == parent) {                 //I can compare without compilation error if there are parent - child relationship. Result = "nierówne"
             System.out.println("równe");
         } else
             System.out.println("nierówne");
@@ -50,8 +50,18 @@ public class Main01 {
 
         Fields fields = new Fields("test argumentowego konstr");  //only constructor with arguments is invoked
 
+//Testing new Exception
+        int testException = 101;
+        try {                                                     //I can also use "throws" and try-catch higher
+            if (testException > 100) {
+                throw new newTestException("too large number");
+            } else {
+                System.out.println("everything is OK");
+            }
+        } catch (newTestException e){
+            System.out.println(e);
+            System.out.println("Caught new Exception");
+        }
     }
-
-
 
 }
