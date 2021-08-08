@@ -41,6 +41,13 @@ public class PolymorphismFieldsTest {
         // System.out.println(parentGrChild.str3);  //as in parentChild. Polymorphism doesn't apply. No such field in Parent so can't see, even if object is GrandChild and in GrandChild there is str3
         System.out.println(parentGrChild.str4);
 
+        System.out.println("\n" + "Tests of getter: ");
+        System.out.println(parent.getStr1Private());              //str1 Parent
+        System.out.println(child.getStr1Private());              //Child
+        System.out.println(grandChild.getStr1Private());          //no such method in GrChild so also Child
+        System.out.println(parentChild.getStr1Private());           //polymorphysm so Child
+        System.out.println(childGrChild.getStr1Private());          //Child (no method in GrChild)
+        System.out.println(parentGrChild.getStr1Private());         //Child (!)  (no method in GrChild)
 
     }
 

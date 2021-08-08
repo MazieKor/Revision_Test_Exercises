@@ -14,7 +14,7 @@ public class Child extends Parent {
 
 
     public String getStr1Private() {
-        return str1Private;
+        return str1Private;  // if I put under comment str1Private in this class and make str1Private not private in Parent it will see field from Parent
     }
 
     public Child (){
