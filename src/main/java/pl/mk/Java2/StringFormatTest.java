@@ -1,5 +1,8 @@
 package pl.mk.Java2;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 public class StringFormatTest {
 
     public static void main(String[] args) {
@@ -34,6 +37,20 @@ public class StringFormatTest {
         String test8 = "My answer is %f and %f !";
         String result8 = String.format(test8, 142d, 99d);     //without direct pointing an argument ($)
         System.out.println(result8);
+
+        GregorianCalendar c = new GregorianCalendar(2021, 8, 8);
+//        System.out.println(String.valueOf(c));    //it's not going to give a short date (just as c.toString() )
+        String test9 = "My answer is %ty and month: %1$tm, %1$te !";
+        String result9 = String.format(test9, c);
+        System.out.println(result9);
+
+        String test10 = "My answer is %-7d !";
+        String result10 = String.format(test10, 145);  //testing left justification
+        System.out.println(result10);
+
+        String test11 = "My answer is %.2d";
+        String result11 = String.format(test11, 12345);
+        System.out.println(result11);
 
     }
 }
