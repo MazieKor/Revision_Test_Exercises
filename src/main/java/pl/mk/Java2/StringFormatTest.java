@@ -1,6 +1,7 @@
 package pl.mk.Java2;
 
 import java.util.Calendar;
+import java.util.Formatter;
 import java.util.GregorianCalendar;
 
 public class StringFormatTest {
@@ -49,8 +50,25 @@ public class StringFormatTest {
         System.out.println(result10);
 
         String test11 = "My answer is %.2d";
-        String result11 = String.format(test11, 12345);
-        System.out.println(result11);
+//        String result11 = String.format(test11, 12345);  //can't use with decimal
+//        System.out.println(result11);
+
+        StringBuilder stringBuilder = new StringBuilder();
+        System.out.println(stringBuilder.getClass());
+        String classname = String.valueOf(stringBuilder.getClass());
+        System.out.println(classname);      //class java.lang.Str...
+        String classname2 = stringBuilder.getClass().getName();
+        System.out.println(classname2);    //java.lang.Str...
+
+        StringBuilder stringBuilder2 = new StringBuilder();
+        Formatter fr = new Formatter(stringBuilder2);
+        fr.format(test10, 212);
+        System.out.println("variabe formattter: " + fr);
+        stringBuilder2.append("\n").append("new Line, not formatted");    //append new line to already formatted text
+        System.out.println("After adding new line: " + stringBuilder2);
+        fr.format(". And class is: %s", stringBuilder2.getClass().getName());   //next format
+        System.out.println("After adding next format: " + stringBuilder2);
+        System.out.println("formatter variable: " + fr);                       //can dispplay the same also with formatter, not stringBuilder
 
     }
 }

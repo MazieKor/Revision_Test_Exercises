@@ -54,13 +54,13 @@ public class Main01 {
         int testException = 101;
         try {                                                     //I can also use "throws" and try-catch higher
             if (testException > 100) {
-                throw new newTestException("too large number");
+                throw new newTestException(45L);
             } else {
-                System.out.println("everything is OK");
+                System.out.println("Exception Test: everything is OK");
             }
         } catch (newTestException e){
-            System.out.println(e);
-            System.out.println("Caught new Exception");
+            System.out.println(e);              //displays message defined in Exception class + 45 number
+            System.out.println("Exception Test: Caught new Exception");
         }
     }
 
