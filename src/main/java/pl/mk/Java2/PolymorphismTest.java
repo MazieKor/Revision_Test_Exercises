@@ -59,6 +59,11 @@ public class PolymorphismTest {
         System.out.println("Testing methods in constructor: ");
         Child2 child2 = new Child2();    //bug, but if childvalue is static shows correctly 1; if showinfo() method were static: it displays ParentValue: 456
 
+        System.out.println("Testing access to field of Child in polymorphysm: ");
+        Parent pr = new Child();
+        System.out.println(pr.getNameTest());           //displays child (without super. in Child constructor displays Parent)
+//        System.out.println("With nameTest as not-private: " + pr.nameTest);     //same as above, displays child (without super. in Child constructor displays Parent)
+
     }
 
 }

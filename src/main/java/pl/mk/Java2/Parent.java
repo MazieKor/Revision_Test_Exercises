@@ -10,6 +10,7 @@ public class Parent {
     private String str2Private = "str2 PARENT Private";
     String str4 = "str4 PARENT";
     private String str4Private = "str4 PARENT Private";
+    private String nameTest = "Parent Name: Parent";
 
     public String getStr1Private() {
         return str1Private;
@@ -24,6 +25,12 @@ public class Parent {
         this.age = age;
     }
 
+    public String getNameTest(){
+        return nameTest;
+    }
+    public void setNameTest(String nameTest) {
+        this.nameTest = nameTest;
+    }
 
     public void printBook() {
         System.out.println("Test: Drukowanie " + "ebook");

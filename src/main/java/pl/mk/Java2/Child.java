@@ -9,7 +9,7 @@ public class Child extends Parent {
     private String str2Private = "str2 CHILD Private";
     String str3 = "str3 CHILD";
     private String str3Private = "str3 CHILD Private";
-
+    private String nameTest = "Child Name: Child";
     //str1 = "dd";      // I can't change the field (even if only declared earlier)
 
 
@@ -20,6 +20,7 @@ public class Child extends Parent {
     public Child (){
 //        super("bezargumentowy", 1);  //If I have only argument-constructor in parent I must use super in class; If I un-comment this line non-argument constructor of parent will not be invoked (only argument construcor of Parent will be invoked + this one from Child)
         System.out.println("konstruktor bezargumentowy dziecko");
+        super.setNameTest(nameTest);
     }
     public Child (String str){
 //        super("argumentowy", 2);
@@ -28,6 +29,11 @@ public class Child extends Parent {
     public Child (int ageChildParam){
 //        super("argumentowy", 2);
         age = ageChildParam;
+    }
+
+
+    public void setNameTest(String nameTest) {
+        this.nameTest = nameTest;
     }
 
     public static void hiddenMethod() {

@@ -9,6 +9,10 @@ public class GrandChild extends Child {
     String str4 = "str4 GRANDCHILD";
     private String str4Private = "str4 GRANDCHILD Private";
 
+//    GrandChild(){
+//        System.out.println("konstruktor bezargumentowy wnuk");
+//    }
+
     public void testSuperGrandChild(){
         super.printBook(1);
     }
