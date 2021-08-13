@@ -52,7 +52,7 @@ public class Main01 {
 
 //Testing new Exception
         int testException = 101;
-        try {                                                     //I can also use "throws" and try-catch higher
+        try {                                                     //I can also use "throws" and try-catch higher (if newTestException extended RuntimeException - I wouldn't have to throws nor try-catch)
             if (testException > 100) {
                 throw new newTestException(45L);
             } else {
