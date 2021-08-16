@@ -1,5 +1,6 @@
 package pl.mk.Java2;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -63,7 +64,9 @@ public class Main01 {
             System.out.println("Exception Test: Caught new Exception");
         }
 
-
+        DecimalFormat form = new DecimalFormat("#.00");
+        String totalSumFormatted = form.format(0.2);
+        System.out.println(totalSumFormatted);
     }
 
 }
