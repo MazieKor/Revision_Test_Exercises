@@ -65,7 +65,7 @@ public class Main01 {
         }
 
         DecimalFormat form = new DecimalFormat("#.00");
-        String totalSumFormatted = form.format(0.2);
+        String totalSumFormatted = form.format(0);
         System.out.println(totalSumFormatted);
     }
 
