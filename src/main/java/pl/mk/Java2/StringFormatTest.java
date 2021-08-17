@@ -49,7 +49,15 @@ public class StringFormatTest {
         String result10 = String.format(test10, 145);  //testing left justification
         System.out.println(result10);
 
-        String test11 = "My answer is %.2d";
+        String test11 = "My answer is millions %,-13d !";
+        String result11 = String.format(test11, 10000000);   //10 000 000    !
+        System.out.println(result11);
+
+        String test13 = "My answer is millions %,-23f !";
+        String result13 = String.format(test13, 10000000d);   //10 000 000,000000       !
+        System.out.println(result13);
+
+        String test12 = "My answer is %.2d";
 //        String result11 = String.format(test11, 12345);  //can't use with decimal
 //        System.out.println(result11);
 
