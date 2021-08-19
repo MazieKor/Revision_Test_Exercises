@@ -26,6 +26,7 @@ public class Main01 {
 
         Object stringInstance = "string";
         String realString = (String) stringInstance;
+        System.out.println("Casting: " + realString);    //prints "string"
 
 
         int test = 9;
@@ -67,6 +68,11 @@ public class Main01 {
         DecimalFormat form = new DecimalFormat("#.00");
         String totalSumFormatted = form.format(0);
         System.out.println(totalSumFormatted);
+
+        System.out.println(OrderParent.parentCity);
+        OrderParent p = new OrderParent();   //static blocks only once invoked
+
+
     }
 
 }

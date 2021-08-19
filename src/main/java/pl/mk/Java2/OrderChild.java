@@ -36,6 +36,10 @@ public class OrderChild extends OrderParent{
 
     public static void main(String[] args) {
             OrderChild oc = new OrderChild();
+        System.out.println();
+        System.out.println();
+        OrderChild oc2 = new OrderChild();
+
     }
 
 }
