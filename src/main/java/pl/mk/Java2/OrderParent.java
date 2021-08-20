@@ -11,7 +11,7 @@ package pl.mk.Java2;
         System.out.println(staticParentName);
     }
 
-    OrderParent() {         //If oly one constructor private - class cant be extended
+    OrderParent() {         //If only one constructor private - class cant be extended
         System.out.println("Parent Field2 is: " + test2);
         System.out.println("Parent Constr");
         staticParentName = "staticParent name in Constructor";
@@ -23,6 +23,7 @@ package pl.mk.Java2;
 //    }
 
     int test2 = 2323;
+    protected String inherTest;
     static String parentName = "parentName";   //the same behavour will be with non-static
     {
         System.out.println(parentName);

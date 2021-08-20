@@ -1,5 +1,6 @@
 package pl.mk.Java1;
 
+import java.awt.*;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -70,6 +71,7 @@ public class Main05 {
 
 //        Files.copy(path1, path2);  //poza metodami zwracającymi true/false w innych musze dawać try
 
+//        OrderParent op = new OrderParent();   //I can't create if constructor is default (not public)
     }
         void nr1 (){
             nr2(); //mogę się odwołać wpisując sama nazwę
@@ -87,4 +89,5 @@ public class Main05 {
         }
 
         }
+
 }

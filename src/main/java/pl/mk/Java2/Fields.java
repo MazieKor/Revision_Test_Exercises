@@ -1,11 +1,13 @@
 package pl.mk.Java2;
 
+import pl.mk.Java1.Main03;   //I can't import if class were not public (default one)
+
 public class Fields {
     static int age = 20;
     final static int volume = 20;
     int height;  // = 0 (do testu metody 7)
 
-
+    Main03 doko = new Main03();
     Fields(){
         System.out.println("konstr bezarg. Fields");
     }
@@ -75,5 +77,9 @@ public class Fields {
         int test2 = age + height;
         System.out.println("2 test: age + height: " + test2);
     }
+
+}
+
+class Fields2Test{           //testing 2nd class in a file
 
 }

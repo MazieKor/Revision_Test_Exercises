@@ -2,6 +2,7 @@ package pl.mk.Java2;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -71,6 +72,17 @@ public class Main01 {
 
         System.out.println(OrderParent.parentCity);
         OrderParent p = new OrderParent();   //static blocks only once invoked
+
+        String tstRef = "testing references";
+        String tstRef2 = tstRef;
+        tstRef = "testing NEW references";     //creating new object
+        System.out.println(tstRef + "\n" + tstRef2);
+
+        String[] testRefArr = {"test", "ref", "arr"};
+        String[] testRefArr2 = testRefArr;
+        testRefArr[1] = "NEW REF";    //changing same object
+        System.out.println(Arrays.toString(testRefArr) + "\n" + Arrays.toString(testRefArr2));
+
 
 
     }

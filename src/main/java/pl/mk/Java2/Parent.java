@@ -54,6 +54,10 @@ public class Parent {
         System.out.println("test super method, PARENT");
     }
 
+    public void testParentGrandchildPolymorphism(){
+        System.out.println("Parent method in Parent - Grandchild polimorph.");
+    }
+
     public void testPolyMorphismParent(Parent parent){
         System.out.println("test Poly Parent");
     }

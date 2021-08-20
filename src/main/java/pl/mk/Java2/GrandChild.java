@@ -21,7 +21,9 @@ public class GrandChild extends Child {
         System.out.println("test super method, GRANDCHILD");
         super.testSuper();
     }
-
+    public void testParentGrandchildPolymorphism(){
+        System.out.println("GRANDCHILD method in Parent - Grandchild polimorph.");
+    }
     public void testPolyMorphismGrandChild(GrandChild grandChild){
         System.out.println("test Poly Grandchild");
     }

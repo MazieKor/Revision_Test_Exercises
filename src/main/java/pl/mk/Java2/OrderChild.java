@@ -12,8 +12,9 @@ public class OrderChild extends OrderParent{
     int test;
     int test2 = 222;
     int test3 = 333;
+    String d;
 
-    OrderChild() {
+    protected OrderChild() {
         methodTest();
         test = 7;
         test2 = 222222222;
