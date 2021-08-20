@@ -1,6 +1,8 @@
 package pl.mk.Java2;
 
- class OrderParent {
+import pl.mk.Java1.TestInherFromOtherPackage;
+
+class OrderParent {
     static  String parentCity = "Zabrze";
     static {
         System.out.println(parentCity);
@@ -49,5 +51,7 @@ package pl.mk.Java2;
 //        Child child11 = (Child) parent; // cannot cast to Child if not extended
         OrderChild child2 = new OrderChild();
         OrderParent parent2 = (OrderParent) child2; //possible but redundant
+
+
     }
 }

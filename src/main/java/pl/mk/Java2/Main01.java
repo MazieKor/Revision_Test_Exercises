@@ -1,5 +1,7 @@
 package pl.mk.Java2;
 
+import pl.mk.Java1.TestInherFromOtherPackage;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -83,8 +85,11 @@ public class Main01 {
         testRefArr[1] = "NEW REF";    //changing same object
         System.out.println(Arrays.toString(testRefArr) + "\n" + Arrays.toString(testRefArr2));
 
+        System.out.println();
+        OrderChild testInher= new TestInherFromOtherPackage();
+        testInher.testOverrideInDiffPackage();
 
-
+        TestInherFromOtherPackage testInher2 = new TestInherFromOtherPackage();
     }
 
 }

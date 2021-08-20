@@ -1,5 +1,6 @@
 package pl.mk.Java1;
 
+import pl.mk.Java2.OrderChild;
 import pl.mk.Java2.Parent;
 
 import java.util.Arrays;
@@ -62,6 +63,5 @@ public class Main04 {
         strr.delete(1,20);
         System.out.println("Stringbuilder: " + strr + ". Length: " + strr.length());  //u
         System.out.println("charTab: " + charTab);
-
     }
 }

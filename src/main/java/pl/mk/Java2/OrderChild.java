@@ -1,5 +1,7 @@
 package pl.mk.Java2;
 
+import pl.mk.Java1.TestInherFromOtherPackage;
+
 public class OrderChild extends OrderParent{
     static String staticParentName = "staticChildName";
     static {
@@ -14,7 +16,7 @@ public class OrderChild extends OrderParent{
     int test3 = 333;
     String d;
 
-    protected OrderChild() {
+     protected OrderChild() {
         methodTest();
         test = 7;
         test2 = 222222222;
@@ -35,12 +37,22 @@ public class OrderChild extends OrderParent{
         System.out.println("Method2, field2 is " + test2);
     }
 
+    protected void testProtectedParent(){
+
+    }
+
+    protected void testOverrideInDiffPackage(){
+        System.out.println("Test if method overriden = Child");
+    }
+
     public static void main(String[] args) {
             OrderChild oc = new OrderChild();
         System.out.println();
         System.out.println();
         OrderChild oc2 = new OrderChild();
-
+        OrderParent op = new OrderParent();   //have access hence the same package
+        TestInherFromOtherPackage testInher2 = new TestInherFromOtherPackage();  //if access modifier of constructor protected I don't have access from parent class
+//        testInher2.testOverrideInDiffPackage();  //protected, hence not accessible
     }
 
 }
