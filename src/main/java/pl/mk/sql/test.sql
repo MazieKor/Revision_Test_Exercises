@@ -29,3 +29,16 @@ WHERE TABLE_NAME = 'test3';
 
 ALTER TABLE test3 COLLATE utf8mb4_unicode_ci;
 INSERT INTO test3 VALUES (null,'name 2');
+INSERT INTO test3 VALUES (null,'Wojtek');
+
+SHOW FULL COLUMNS FROM test3;
+
+ALTER TABLE test3 COLLATE utf8mb4_0900_ai_ci;
+
+ALTER TABLE test3 CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+EXPLAIN INSERT INTO test3 VALUES (null,'Marek');
+SELECT * FROM test3;
+EXPLAIN SELECT * FROM test3 ORDER BY test3FirstNames;  # using filesort
+EXPLAIN SELECT * FROM test3 WHERE test3FirstNames = 'name 2' ;
+EXPLAIN SELECT * FROM test3 WHERE test3FirstNames = 'name 2' ORDER BY test3FirstNames;  # testing usage of filesort
