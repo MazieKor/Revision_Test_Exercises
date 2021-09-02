@@ -42,3 +42,26 @@ SELECT * FROM test3;
 EXPLAIN SELECT * FROM test3 ORDER BY test3FirstNames;  # using filesort
 EXPLAIN SELECT * FROM test3 WHERE test3FirstNames = 'name 2' ;
 EXPLAIN SELECT * FROM test3 WHERE test3FirstNames = 'name 2' ORDER BY test3FirstNames;  # testing usage of filesort
+
+ALTER TABLE test3 ADD (surname VARCHAR(45), address VARCHAR (20));
+UPDATE test3 SET surname = 'Kowalski', address = 'Warszawa' where id3 = 1;
+UPDATE test3 SET surname = 'NOwak', address = 'Gliwice' where id3 = 2;
+UPDATE test3 SET surname = 'Jordan', address = 'Zabrze' where id3 = 3;
+UPDATE test3 SET surname = 'Inny', address = 'Gdańsk' where id3 = 4;
+UPDATE test3 SET surname = 'Welec', address = 'Bytom' where id3 = 5;
+
+EXPLAIN SELECT * FROM test3 GROUP BY surname;  #temporary table, although GROUP BY not sorting any more (after MySQL 5.7)
+EXPLAIN SELECT * FROM test3 WHERE id3 < 4;
+
+ALTER TABLE test3 ADD (columnTEXT3 TEXT(4));   #testing meaning of '()' in TEXT type
+ALTER TABLE test3 ADD (columnTINYTEXT3 TINYTEXT);
+SELECT @@SESSION.sql_mode;  #checking which mode is set to test behaviour by inserting too big data
+SELECT @@GLOBAL.sql_mode;
+
+UPDATE test3 SET columnTEXT3 = 'adąęfgr' WHERE id3 = 2;
+UPDATE test3 SET columnTEXT3 = 'adąęcdw sprawdzanie jak długi teskt można wsatwić' WHERE id3 = 3;
+UPDATE IGNORE test3 SET columnTINYTEXT3 = 'Testowanie przekroczenia granicy liczby znaków w strict mode TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST ZZZZ 12345678900' WHERE id3 = 5;   #can't insert 255 characters - too long, unless add IGNORE
+
+
+
+CREATE INDEX ala ON test3(surname);
