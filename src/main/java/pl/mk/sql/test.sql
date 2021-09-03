@@ -64,4 +64,6 @@ UPDATE IGNORE test3 SET columnTINYTEXT3 = 'Testowanie przekroczenia granicy licz
 
 
 
+
 CREATE INDEX ala ON test3(surname); # testing 2 + this commit I male local
+
