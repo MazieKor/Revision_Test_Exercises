@@ -63,7 +63,59 @@ UPDATE test3 SET columnTEXT3 = 'adąęcdw sprawdzanie jak długi teskt można ws
 UPDATE IGNORE test3 SET columnTINYTEXT3 = 'Testowanie przekroczenia granicy liczby znaków w strict mode TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST ZZZZ 12345678900' WHERE id3 = 5;   #can't insert 255 characters - too long, unless add IGNORE
 
 
+CREATE INDEX indVarChar ON test3(surname); # testing 2 + this commit I make local
+CREATE INDEX indIndex ON test3(columnTINYTEXT3); # for TEXT and BLOB I must give length of index
 
+CREATE TABLE orders (id INT NOT NULL AUTO_INCREMENT, contentOfOrder VARCHAR(100), customerId INT NOT NULL, PRIMARY KEY (id), FOREIGN KEY (customerId) REFERENCES test3(id3) ON DELETE CASCADE);
 
-CREATE INDEX ala ON test3(surname); # testing 2 + this commit I male local
+INSERT INTO orders VALUES (null, 'ball', 3);
+INSERT INTO orders VALUES (null, 'bed', 5);
+INSERT INTO orders VALUES (null, 'comic book', 3);
+INSERT INTO orders VALUES (null, 'book', 1);
+INSERT INTO orders VALUES (null, 'knife', 4);
+INSERT IGNORE INTO orders VALUES (null, 'sweater', 7);  #can't do, but no error
+INSERT INTO orders VALUES (null, 'newspaper', 3);
+INSERT INTO orders VALUES (null, 'ticket', 3);
+INSERT INTO orders VALUES (null, 'magazine', 3);
+INSERT INTO orders VALUES (null, 'bread', 2);
+INSERT INTO orders VALUES (null, 'cheese', 3);
+INSERT INTO orders VALUES (null, 'book 2', 1);
+INSERT INTO orders VALUES (null, 'toy2', 3);
+INSERT INTO orders(contentOfOrder, customerId) VALUES ('milk', 8);  #can't do, error
+INSERT INTO orders VALUES (null, 'milk', 3);
+INSERT INTO orders VALUES (null, 'apple', 4);
 
+DELETE FROM orders WHERE id = 27;
+DELETE FROM orders WHERE id = 25;
+DELETE FROM orders WHERE id = 28;
+DELETE FROM test3 WHERE id3 = 4;
+
+CREATE TABLE ordersWoCascade (id INT NOT NULL AUTO_INCREMENT, contentOfOrder VARCHAR(100), customerId INT NOT NULL, PRIMARY KEY (id), FOREIGN KEY (customerId) REFERENCES test3(id3));
+INSERT INTO ordersWoCascade VALUES (null, 'ball', 3);
+INSERT INTO ordersWoCascade VALUES (null, 'bed', 5);
+INSERT INTO ordersWoCascade VALUES (null, 'comic book', 3);
+INSERT INTO ordersWoCascade VALUES (null, 'book', 1);
+INSERT INTO ordersWoCascade VALUES (null, 'apple', 5);
+INSERT INTO ordersWoCascade VALUES (null, 'pear', 5);
+INSERT INTO ordersWoCascade VALUES (null, 'toy', 1);
+DELETE FROM ordersWoCascade WHERE id = 3;
+DELETE FROM ordersWoCascade WHERE id = 5;
+DELETE FROM test3 WHERE id3 = 5;  # can't do it without 'ON DELETE CASCADE'
+DELETE FROM ordersWoCascade WHERE id = 2;
+DELETE FROM ordersWoCascade WHERE id = 6;
+DELETE FROM test3 WHERE id3 = 5;  # now I can delete (no records in children table)
+
+SELECT * FROM orders WHERE customerId = 3 LIMIT 2 OFFSET 1;
+EXPLAIN SELECT * FROM orders GROUP BY customerId;
+
+INSERT INTO orders VALUES (null, 'ball', 2);
+INSERT INTO orders VALUES (null, 'bed', 3);
+INSERT INTO orders VALUES (null, 'comic book', 1);
+INSERT INTO orders VALUES (null, 'book', 2);
+INSERT INTO orders VALUES (null, 'book', 2);
+INSERT INTO orders VALUES (null, 'book', 2);
+INSERT INTO orders VALUES (null, 'ball', 2);
+INSERT INTO orders VALUES (null, 'poster', 2);
+
+EXPLAIN SELECT * FROM orders GROUP BY contentOfOrder;   # using temporary, not sorted
+EXPLAIN SELECT * FROM orders GROUP BY customerId;       # using index, sorted
