@@ -108,6 +108,9 @@ public class Main01 {
 
         int a2 = (int) 14.9;
         System.out.println(a2);
+
+        System.out.println(String.format("%f", Math.pow(2,32)));
+
     }
     static int testOfmethodsInt(int test2){
         test2 += 355;

@@ -64,7 +64,7 @@ UPDATE IGNORE test3 SET columnTINYTEXT3 = 'Testowanie przekroczenia granicy licz
 
 
 CREATE INDEX indVarChar ON test3(surname); # testing 2 + this commit I make local
-CREATE INDEX indIndex ON test3(columnTINYTEXT3); # for TEXT and BLOB I must give length of index
+CREATE INDEX indIndex ON test3(columnTINYTEXT3); # for TEXT and BLOB I must give length of index (key is not created)
 
 CREATE TABLE orders (id INT NOT NULL AUTO_INCREMENT, contentOfOrder VARCHAR(100), customerId INT NOT NULL, PRIMARY KEY (id), FOREIGN KEY (customerId) REFERENCES test3(id3) ON DELETE CASCADE);
 
@@ -105,6 +105,8 @@ DELETE FROM ordersWoCascade WHERE id = 2;
 DELETE FROM ordersWoCascade WHERE id = 6;
 DELETE FROM test3 WHERE id3 = 5;  # now I can delete (no records in children table)
 
+describe orderswocascade;
+
 SELECT * FROM orders WHERE customerId = 3 LIMIT 2 OFFSET 1;
 EXPLAIN SELECT * FROM orders GROUP BY customerId;
 
@@ -119,3 +121,86 @@ INSERT INTO orders VALUES (null, 'poster', 2);
 
 EXPLAIN SELECT * FROM orders GROUP BY contentOfOrder;   # using temporary, not sorted
 EXPLAIN SELECT * FROM orders GROUP BY customerId;       # using index, sorted
+
+ALTER TABLE orders ADD (testFloat FLOAT(5,2), testDouble DOUBLE, testDouble2 DOUBLE(4,2), testDecimal DECIMAL(5,3));
+UPDATE orders SET testFloat = 32.2 WHERE id = 1;
+UPDATE orders SET testDouble = 39.2 WHERE id = 1;
+UPDATE orders SET testDouble2 = 39 WHERE id = 1;
+UPDATE orders SET testDecimal = 32 WHERE id = 1;
+
+UPDATE orders SET testFloat = 11.3456 WHERE id = 2;
+UPDATE orders SET testDouble = 39.3456 WHERE id = 2;
+UPDATE orders SET testDouble2 = 39.3456 WHERE id = 2;
+UPDATE orders SET testDecimal = 32.3456 WHERE id = 2;
+
+UPDATE orders SET testFloat = 999.3456 WHERE id = 3;
+UPDATE orders SET testDouble = 999.3456 WHERE id = 3;
+UPDATE orders SET testDouble2 = 99.3456 WHERE id = 3;
+UPDATE orders SET testDecimal = 99.3456 WHERE id = 3;
+
+UPDATE orders SET testFloat = 999.995 WHERE id = 4;
+UPDATE orders SET testDouble = 1000.3456 WHERE id = 4;
+UPDATE orders SET testDouble2 = 100 WHERE id = 4;
+UPDATE orders SET testDecimal = 99.9995 WHERE id = 4;
+
+UPDATE IGNORE orders SET testFloat = 1000 WHERE id = 17;
+UPDATE IGNORE orders SET testDouble = 1000.3456 WHERE id = 17;
+UPDATE IGNORE orders SET testDouble2 = 123 WHERE id = 17;
+UPDATE IGNORE orders SET testDecimal = 100.12 WHERE id = 17;
+
+UPDATE orders SET testFloat = 1 WHERE id = 18;
+UPDATE orders SET testDouble = 1.3456 WHERE id = 18;
+UPDATE orders SET testDouble2 = 1 WHERE id = 18;
+UPDATE orders SET testDecimal = 1 WHERE id = 18;
+
+UPDATE orders SET testFloat = 67899 WHERE contentOfOrder = 'book234';
+UPDATE orders SET testDouble = 12.3456 WHERE contentOfOrder = 18;
+
+ALTER TABLE orders ADD (testCHAR CHAR(4), testVARCHAR VARCHAR(4));
+UPDATE orders SET testCHAR = 'test' WHERE id = 1;
+UPDATE orders SET testVARCHAR = 'test' WHERE id = 1;
+UPDATE orders SET testCHAR = 'uwaga' WHERE id = 2;  # I can't insert, too long
+UPDATE orders SET testVARCHAR = 'uwaga' WHERE id = 2;  # I can't insert, too long
+UPDATE IGNORE orders SET testCHAR = 'uwaga' WHERE id = 3;  # I can insert, but trucated
+UPDATE IGNORE orders SET testVARCHAR = 'uwaga' WHERE id = 3;  # I can insert, but trucated
+UPDATE orders SET testCHAR = '汉字汉字' WHERE id = 4;
+UPDATE orders SET testVARCHAR = '汉字汉字' WHERE id = 4;
+ALTER TABLE orders ADD (testCHAR2 CHAR(255));  #checking maximal character or bytes
+UPDATE orders SET testCHAR2 = '汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉' WHERE id = 4;
+SELECT CHAR_LENGTH(testCHAR2) FROM orders WHERE id = 4;
+
+ALTER TABLE orders ADD (testVARCHAR2 VARCHAR(255));
+UPDATE orders SET testVARCHAR2 = '汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉字汉' WHERE id = 4;
+SELECT LENGTH(testVARCHAR2) FROM orders WHERE id = 4;
+ALTER TABLE orders ADD (testVARCHAR3 VARCHAR(16380));  # exceeds max row size
+
+
+DESCRIBE test3;
+DESCRIBE orders;
+DESCRIBE orderswocascade;
+
+CREATE TABLE orders2 (id INT, customerId INT, PRIMARY KEY (id), FOREIGN KEY (customerId) REFERENCES test3(id3) ON DELETE CASCADE);
+DESCRIBE orders2;
+
+CREATE TABLE orders3 (id INT AUTO_INCREMENT, defCheck TEXT DEFAULT('default tekst'), testField CHAR(23) UNIQUE, PRIMARY KEY (id));
+DESCRIBE orders3;
+INSERT INTO orders3 VALUES(null, null, 'czy działa testField 3');
+#INSERT INTO orders3 VALUES(null, , 'czy działa testField 3'); # not possible to use default like this
+INSERT INTO orders3(defCheck, testField) VALUES( 'czy działa testField 5'); # not possible to use default like this
+INSERT INTO orders3(testField) VALUES('czy działa testField 6');
+INSERT INTO orders3(testField) VALUES('czy działa testField 7');
+DROP TABLE orders3;
+
+DESCRIBE orders3;
+
+CREATE TABLE orders4 (id INT AUTO_INCREMENT, defCheck TEXT DEFAULT('default tekst'), testField CHAR(23) NOT NULL DEFAULT (null) , PRIMARY KEY (id));
+DESCRIBE orders4;
+INSERT INTO orders4(defCheck) VALUES('czy działa testField 7');
+DROP TABLE orders4;
+
+CREATE TABLE ordersCheckAdding (id INT NOT NULL AUTO_INCREMENT, testFloat FLOAT(4,2), testDouble2 DOUBLE(4,2), testDecimal DECIMAL(4,2), PRIMARY KEY (id));
+INSERT INTO ordersCheckAdding(testFloat, testDouble2, testDecimal) VALUES (10.224, 10.224, 10.224), (10.224, 10.224, 10.224), (10.224, 10.224, 10.224);
+SELECT SUM(testFloat), SUM(testDouble2), SUM(testDecimal) FROM ordersCheckAdding;
+DELETE FROM ordersCheckAdding;
+INSERT IGNORE INTO ordersCheckAdding(testFloat, testDouble2, testDecimal) VALUES (10.224, 10.224, 10.224), (10.224, 10.224, 10.224), (10.224, 10.224, 10.224);
+SELECT SUM(testFloat), SUM(testDouble2), SUM(testDecimal) FROM ordersCheckAdding;
