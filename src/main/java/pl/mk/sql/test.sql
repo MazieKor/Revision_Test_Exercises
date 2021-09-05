@@ -204,3 +204,10 @@ SELECT SUM(testFloat), SUM(testDouble2), SUM(testDecimal) FROM ordersCheckAdding
 DELETE FROM ordersCheckAdding;
 INSERT IGNORE INTO ordersCheckAdding(testFloat, testDouble2, testDecimal) VALUES (10.224, 10.224, 10.224), (10.224, 10.224, 10.224), (10.224, 10.224, 10.224);
 SELECT SUM(testFloat), SUM(testDouble2), SUM(testDecimal) FROM ordersCheckAdding;
+
+describe ordersCheckAdding;
+ALTER TABLE ordersCheckAdding MODIFY COLUMN id MEDIUMINT;
+CREATE TABLE test4 (id INT, testFloat FLOAT(4,2));
+describe test4;
+ALTER TABLE test4 MODIFY COLUMN id INT, ADD PRIMARY KEY (id);
+DROP TABLE test4;
