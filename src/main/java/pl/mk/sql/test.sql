@@ -211,3 +211,50 @@ CREATE TABLE test4 (id INT, testFloat FLOAT(4,2));
 describe test4;
 ALTER TABLE test4 MODIFY COLUMN id INT, ADD PRIMARY KEY (id);
 DROP TABLE test4;
+
+SELECT contentOfOrder, customerId FROM orders;
+SELECT DISTINCT contentOfOrder, customerId FROM orders;
+
+CREATE TABLE testFunctions (id INT, test1 INT, test2 INT, test3 INT, test4 DECIMAL(4,2));
+DESC testFunctions;
+ALTER TABLE testFunctions MODIFY COLUMN id INT AUTO_INCREMENT, ADD PRIMARY KEY (id);
+INSERT INTO testFunctions VALUES (null, 2, 3, 4, 5);
+INSERT INTO testFunctions VALUES (null, 2, 3, 47, 5);
+INSERT INTO testFunctions VALUES (null, 2, 3, 50, 8);
+INSERT INTO testFunctions (test1, test2, test3) VALUES (16, 31, 4);
+INSERT INTO testFunctions (test1, test3, test4) VALUES (2, 3, 4);
+INSERT INTO testFunctions (test1, test3, test4) VALUES (2.4, 3, 4);
+INSERT INTO testFunctions (test1, test3, test4) VALUES ('red', 3, 4);
+DELETE FROM testFunctions where id = 12;
+
+SELECT DISTINCT test2 FROM testFunctions;
+SELECT COUNT(id) FROM testFunctions;  #some tests on Count and AVG with nulls
+SELECT COUNT(test1) FROM testFunctions;
+SELECT COUNT(test2) FROM testFunctions;
+SELECT COUNT(test3) FROM testFunctions;
+SELECT COUNT(test4) FROM testFunctions;
+SELECT COUNT(*) FROM testFunctions;
+SELEct SUM(test1) FROM testFunctions;
+SELEct SUM(test2) FROM testFunctions;
+SELEct SUM(test3) FROM testFunctions;
+SELEct SUM(test4) FROM testFunctions;
+SELECT AVG(test1) FROM testFunctions;
+SELECT AVG(test2) FROM testFunctions;
+SELECT AVG(test3) FROM testFunctions;
+SELECT AVG(test4) FROM testFunctions;
+
+SELECT test2, COUNT(*) FROM testFunctions GROUP BY test2;
+SELECT test2, COUNT(test2) FROM testFunctions GROUP BY test2;
+EXPLAIN SELECT DISTINCT test1 FROM testFunctions;   #comparing distinct and group by (both 'using temporary)
+EXPLAIN SELECT test1 FROM testFunctions GROUP BY test1;
+EXPLAIN SELECT test1, SUM(test1) FROM testFunctions GROUP BY test1;
+
+INSERT INTO testFunctions VALUES (null, 2, 3, 50, 8);
+INSERT INTO testFunctions VALUES (null, 2, 3, 50, 8);
+DELETE FROM testFunctions WHERE id = 14;
+DELETE FROM testFunctions; #id and AUTO_INCREMENT not zeroed
+
+INSERT INTO testFunctions SET id=29, test1=2600, test2=23, test3 = test2, test4 = 67.9;
+INSERT INTO testFunctions VALUES (19, 6000, 3, 50, 8);
+DESC orders4;
+CREATE TABLE orders4 (id INT, customerId INT UNIQUE, PRIMARY KEY (id), FOREIGN KEY (customerId) REFERENCES test3(id3) ON DELETE CASCADE);
