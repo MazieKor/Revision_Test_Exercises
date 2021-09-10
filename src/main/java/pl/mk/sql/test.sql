@@ -100,10 +100,68 @@ INSERT INTO ordersWoCascade VALUES (null, 'pear', 5);
 INSERT INTO ordersWoCascade VALUES (null, 'toy', 1);
 DELETE FROM ordersWoCascade WHERE id = 3;
 DELETE FROM ordersWoCascade WHERE id = 5;
-DELETE FROM test3 WHERE id3 = 5;  # can't do it without 'ON DELETE CASCADE'
+DELETE FROM test3 WHERE id3 = 3;  # can't do it without 'ON DELETE CASCADE'
+UPDATE test3 SET  test3FirstNames = 'Michael' WHERE id3 = 3;  # can update
+UPDATE test3 SET  id3 = 23 WHERE test3FirstNames = 'Michael';  # can't update primary key
 DELETE FROM ordersWoCascade WHERE id = 2;
 DELETE FROM ordersWoCascade WHERE id = 6;
 DELETE FROM test3 WHERE id3 = 5;  # now I can delete (no records in children table)
+
+ALTER TABLE test1 MODIFY COLUMN testFirstNames VARCHAR(250);
+ALTER TABLE test2 ADD FOREIGN KEY(id2) REFERENCES test1(id) ON DELETE CASCADE;
+DESC test2;
+
+INSERT INTO test1 VALUES (null, 'Maciek'), (null, 'Wojtek'), (null, 'Iwona'), (null, 'Marek');
+INSERT INTO test2 VALUES (2, 'Wojtek'), (4, 'Iwona'), (3, 'Marek');
+DELETE FROM test2 WHERE id2 = 3;
+DELETE FROM test1 WHERE id = 1;
+DELETE FROM test1 WHERE id = 2;
+SHOW TABLE STATUS like 'test2';
+ALTER TABLE test2 DROP FOREIGN KEY test2_ibfk_2;
+ALTER TABLE test2 DROP FOREIGN KEY test2_ibfk_1;
+
+ALTER TABLE test2 ADD CONSTRAINT no_cascade FOREIGN KEY(id2) REFERENCES test1(id);
+DELETE FROM test1 WHERE id = 3;
+DELETE FROM test1 WHERE id = 4;
+DELETE FROM test2 WHERE id2 = 4;
+ALTER TABLE test2 DROP CONSTRAINT test2_ibfk_3;
+ALTER TABLE test2 DROP CONSTRAINT no_cascade;
+
+ALTER TABLE test2 DROP CONSTRAINT no_cascade, ADD CONSTRAINT cascade2 FOREIGN KEY(id2) REFERENCES test1(id) ON DELETE CASCADE;
+ALTER TABLE test2 DROP CONSTRAINT cascade2;
+
+ALTER TABLE test2 ADD booltest BOOL;
+INSERT INTO test2 VALUES (null, 'Tom', 1), (null, 'Tom', 2), (null, 'Tom', 0), (null, 'Tom', 23);
+SELECT booltest FROM test2 WHERE id2 = 8;
+
+ALTER TABLE test2 ADD booltest2 TINYINT;
+ALTER TABLE test2 ADD booltest3 TINYINT(34);
+ALTER TABLE test2 ADD booltest4 INT;
+
+INSERT INTO test2 VALUES (null, 'Tom', 1,1,1,1), (null, 'Tom', 2,2,2,2), (null, 'Tom', 0,0,0,0), (null, 'Tom', 23,23,23,23);
+INSERT INTO test2 VALUES (null, 'Tom', TRUE, true, true, true), (null, 'Tom', TRUE, FALSE, false, true), (null, 'Tom', FALSE,FALSE,FALSE,FALSE);
+SELECT * FROM test2 WHERE test2.booltest2 IS TRUE;
+
+
+ALTER TABLE test2 ADD bittest BIT;
+ALTER TABLE test2 ADD bittest2 BIT(3);
+INSERT INTO test2(bittest) VALUES (1);
+INSERT INTO test2(bittest2) VALUES (4);
+INSERT INTO test2(bittest2) VALUES (12);
+
+SELECT id2, bittest, bittest2 FROM test2 WHERE test2.bittest IS TRUE;
+SELECT id2, bittest, bittest2 FROM test2 WHERE test2.bittest IS FALSE;
+SELECT id2, bittest, bittest2 FROM test2 WHERE test2.bittest = 0;
+SELECT id2, bittest, bittest2 FROM test2 WHERE test2.bittest = 1;
+SELECT id2, bittest, bittest2 FROM test2 WHERE test2.bittest2 IS TRUE;
+SELECT id2, bittest, bittest2 FROM test2 WHERE test2.bittest2 =4;
+SELECT id2, bittest, bittest2 FROM test2 WHERE test2.bittest2 =6;
+SELECT id2, bittest, bittest2 FROM test2;
+
+
+ALTER TABLE test2 DROP COLUMN bittest;
+
+
 
 describe orderswocascade;
 
