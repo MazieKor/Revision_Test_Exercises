@@ -148,6 +148,9 @@ ALTER TABLE test2 ADD bittest2 BIT(3);
 INSERT INTO test2(bittest) VALUES (1);
 INSERT INTO test2(bittest2) VALUES (4);
 INSERT INTO test2(bittest2) VALUES (12);
+INSERT INTO test1 VALUES (null, 'testFirstNames');
+INSERT INTO test1 VALUES (null, testFirstNames);
+
 
 SELECT id2, bittest, bittest2 FROM test2 WHERE test2.bittest IS TRUE;
 SELECT id2, bittest, bittest2 FROM test2 WHERE test2.bittest IS FALSE;
@@ -158,6 +161,7 @@ SELECT id2, bittest, bittest2 FROM test2 WHERE test2.bittest2 =4;
 SELECT id2, bittest, bittest2 FROM test2 WHERE test2.bittest2 =6;
 SELECT id2, bittest, bittest2 FROM test2;
 
+ALTER TABLE test2 ADD newCol INT AFTER booltest;
 
 ALTER TABLE test2 DROP COLUMN bittest;
 
