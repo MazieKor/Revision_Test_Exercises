@@ -1,6 +1,4 @@
-package pl.mk.AccentureTest;
-
-import pl.mk.AccentureTest.Exercise;
+package pl.mk.RecruitmentTest;
 
 import java.util.ArrayList;
 import java.util.Arrays;

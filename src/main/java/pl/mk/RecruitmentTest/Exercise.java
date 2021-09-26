@@ -1,4 +1,4 @@
-package pl.mk.AccentureTest;
+package pl.mk.RecruitmentTest;
 
 import java.util.*;
 
