@@ -35,7 +35,7 @@ public class TestInherFromOtherPackage extends OrderChild {
         TestInherFromOtherPackage testInher3 = new TestInherFromOtherPackage();
         testInher3.testProtectedParent();  //access via subclass type
 
-
+        
         OrderChild testInher4 = new TestInherFromOtherPackage();
 //        testInher4.testProtectedParent();  //no access via superclass type (though subclass object)
 

@@ -2,6 +2,10 @@ package pl.mk.Java2;
 
 import pl.mk.Java1.TestInherFromOtherPackage;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class OrderChild extends OrderParent{
     static String staticParentName = "staticChildName";
     static {
@@ -46,6 +50,9 @@ public class OrderChild extends OrderParent{
     }
 
     public static void main(String[] args) {
+
+        List<Integer> integers = new ArrayList<>(Arrays.asList(1,2,3,4,4));
+
             OrderChild oc = new OrderChild();
         System.out.println();
         System.out.println();
